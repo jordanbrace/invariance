@@ -1,0 +1,13 @@
+Package: invariance
+Title: Measurement Invariance Tests
+Version: 0.0.0.9000
+Authors@R: "Jordan Brace <jordan_brace@yahoo.ca> [aut, cre]"
+Description: Provides a wrapper for functions used in the Structural Equation
+    Modelling (SEM) package lavaan to quickly test measurement invariance.
+Depends:
+    R (>= 3.1.1),
+    lavaan
+Imports:
+    lavaan
+License: CC0
+LazyData: true
