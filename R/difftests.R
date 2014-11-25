@@ -18,8 +18,21 @@
 Dnorm<-function(msmall,mbig){
 	#extracts necessary values from lavaan models
 	chibig<-inspect(mbig,"fit.indices")["chisq"]
-	dfbig<-inspect(mbig,"fit.indices")["df"]
 	chismall<-inspect(msmall,"fit.indices")["chisq"]
+	
+	#validity check
+	assert_that(chibig>=chismall)
+	
+	if(chismall==chibig){
+		warning("Warning: Identical Models Being Compared")
+	}
+	
+	assert_that(class(msmall)=="lavaan")
+	
+	assert_that(class(mbig)=="lavaan")
+	
+	#additional values extracted from lavaan object
+	dfbig<-inspect(mbig,"fit.indices")["df"]
 	dfsmall<-inspect(msmall,"fit.indices")["df"]
 	
 	#computes differences
@@ -53,9 +66,22 @@ Dnorm<-function(msmall,mbig){
 DSB<-function(msmall,mbig){
 	#extracts necessary values from lavaan models
 	chibig<-inspect(mbig,"fit.indices")["chisq"]
+	chismall<-inspect(msmall,"fit.indices")["chisq"]
+	
+	#validity check
+	assert_that(chibig>=chismall)
+	
+	if(chismall==chibig){
+		warning("Warning: Identical Models Being Compared")
+	}
+	
+	assert_that(class(msmall)=="lavaan")
+	
+	assert_that(class(mbig)=="lavaan")
+	
+	#additional values extracted from lavaan output
 	SBbig<-inspect(mbig,"fit.indices")["chisq.scaled"]
 	dfbig<-inspect(mbig,"fit.indices")["df"]
-	chismall<-inspect(msmall,"fit.indices")["chisq"]
 	SBsmall<-inspect(msmall,"fit.indices")["chisq.scaled"]
 	dfsmall<-inspect(msmall,"fit.indices")["df"]
 	

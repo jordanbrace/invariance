@@ -13,6 +13,9 @@
 #' '
 #' invarianceSeries(ana.model,data)
 invarianceSeries<-function(model,data,group="group"){
+	#validity checks aren't really necessary here
+	#theyre all in lavaan or the difference test functions
+	
 	#initial tests of fit
 	m0<-m0run(model,data,group)
 	m1<-m1run(model,data,group)
